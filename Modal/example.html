@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./src/css/styles.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="button-container">
+        <!-- only for demo -->
+        <p class="btn btn-modal dark" data-id="fin-fout-modal">
+          Fade in fade out
+        </p>
+      </div>
+    </div>
+    <!-- Modal container and dark background   -->
+    <div class="modal" id="fin-fout-modal">
+      <!-- Content container  -->
+      <div class="m-container">
+        <h4 class="m-title">Modal title</h4>
+        <!-- Title  -->
+        <p class="m-close"></p>
+        <!-- Main close button  -->
+
+        <!-- Content container  -->
+        <div class="m-content">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores,
+            cumque.
+          </p>
+          <!-- Content example  -->
+
+          <!-- Footer container  -->
+          <div class="m-footer">
+            <p class="btn btn-modal red">Button</p>
+            <!-- button example  -->
+            <p class="btn btn-modal blue">Button</p>
+            <!-- button example  -->
+            <p class="btn dark close-modal" data-id="close-options-modal">
+              Close modal
+            </p>
+            <!-- close button example  -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./src/js/app.js"></script>
+  </body>
+</html>
