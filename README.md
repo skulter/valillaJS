@@ -18,9 +18,10 @@
 9. 좌, 우 버튼 클릭하면 다음 이미지 보여주는 배너 만들기
 10. 마우스 오버시 고양이 이름 노출
 11. 최근 검색어 기능
-12. Event Delegation
+12. Event Delegation, Event Bubbling, Event Capture
 13. 웹 컴포넌트
-14. 기본 레아이웃 짜보기
+14. 기본 레이아웃 짜보기
+15. 라우터 기능 구현하기
 
 
 
