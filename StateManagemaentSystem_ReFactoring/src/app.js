@@ -1,77 +1,39 @@
-export default function app() {
-  //#region 여러개의 속성 관리하기
-  // let currentObserver = null;
-  // const state = {
-  //   a: 10,
-  //   b: 20,
-  // };
-  // const stateKeys = Object.keys(state);
-  // for (const key of stateKeys) {
-  //   let _value = state[key];
-  //   const observers = new Set();
-  //   Object.defineProperty(state, key, {
-  //     get() {
-  //       console.dir(observers)
-  //       if (currentObserver) observers.add(currentObserver);
-  //       return _value;
-  //     },
-  //     set(value) {
-  //       _value = value;
-  //       observers.forEach((observer) => observer());
-  //     },
-  //   });
-  // }
-  // const 덧셈_계산기 = () => {
-  //   currentObserver = 덧셈_계산기;
-  //   console.log(`a + b = ${state.a + state.b}`);
-  // };
-  // const 뺄셈_계산기 = () => {
-  //   currentObserver = 뺄셈_계산기;
-  //   console.log(`a - b = ${state.a - state.b}`);
-  // };
-  // 덧셈_계산기();
-  // 뺄셈_계산기();
-  // state.a = 100;
-  // state.b = 200;
-  //#endregion
+import { Component } from "./core/Component.js";
+import { setA, setB, store } from "./store.js";
+import { TestComponent } from "./TestComponent.js";
 
-  //#region 함수화
-  let currentObserver = null;
+const InputA = () =>
+  `<input id="stateA" value="${store.getState().a}" size="5" />`;
+const InputB = () =>
+  `<input id="stateB" value="${store.getState().b}" size="5" />`;
+const Calculator = () =>
+  `<p>a + b = ${store.getState().a + store.getState().b}</p>`;
 
-  const observe = (fn) => {
-    currentObserver = fn;
-    fn();
-    currentObserver = null;
-  };
+const testComopnent = () => 
+  `<div id="test">asdasdas </div>`;
 
-  const observable = (obj) => {
-    Object.keys(obj).forEach((key) => {
-      let _value = obj[key];
-      const observers = new Set();
+export class App extends Component {
+  template() {
+    return `
+    ${InputA()}
+    ${InputB()}
+    ${Calculator()}
+    ${testComopnent()}
+  `;
+  }
 
-      Object.defineProperty(obj, key, {
-        get() {
-          if (currentObserver) observers.add(currentObserver);
-          return _value;
-        },
-
-        set(value) {
-          _value = value;
-          observers.forEach((fn) => fn());
-        },
-      });
+  setEvent() {
+    const { $el } = this;
+    $el.querySelector("#stateA").addEventListener("keyup", ({ target }) => {
+      store.dispatch(setA(Number(target.value)));
     });
-    return obj;
-  };
 
-  const 상태 = observable({ a: 10, b: 20 });
-  observe(() => console.log(`a = ${상태.a}`));
-  observe(() => console.log(`b = ${상태.b}`));
-  observe(() => console.log(`a + b = ${상태.a} + ${상태.b}`));
-  observe(() => console.log(`a * b = ${상태.a} + ${상태.b}`));
-  observe(() => console.log(`a - b = ${상태.a} + ${상태.b}`));
+    $el.querySelector("#stateB").addEventListener("keyup", ({ target }) => {
+      store.dispatch(setB(Number(target.value)));
+    });
+  }
 
-  상태.a = 100;
-  상태.b = 200;
-  //#endregion
+  mounted() {
+    new TestComponent(document.querySelector("#test"));
+  }
 }
