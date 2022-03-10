@@ -1,0 +1,19 @@
+{
+  "name": "virtualdom",
+  "version": "1.0.0",
+  "description": "앞서만든 Observer Pattern에는 문제점이있다.\r 만약 10명의 구독자가 100개의 신문사를 구독한다고 했을 경우, 구독 관련 코드가 기하급수적으로 늘어날 것이다.",
+  "main": "testDOM.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.5",
+    "@babel/plugin-transform-arrow-functions": "^7.16.7",
+    "@babel/plugin-transform-template-literals": "^7.16.7",
+    "@babel/preset-react": "^7.16.7"
+  }
+}
